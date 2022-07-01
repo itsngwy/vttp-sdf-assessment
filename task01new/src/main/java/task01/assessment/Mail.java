@@ -32,7 +32,8 @@ public class Mail {
         reader = new FileReader(txtFile);
         br = new BufferedReader(reader);
         while ((line = br.readLine()) != null) {
-            oldMail.add(line.replaceAll("_{2,}", ""));
+            //oldMail.add(line.replaceAll("_{2,}", ""));
+            oldMail.add(line);
         }
         //System.out.println(oldMail);
     }
@@ -72,13 +73,17 @@ public class Mail {
 
             for (int j = 0; j < words.length; j++) {
                 for (String key: dataSet.keySet()) {
-                    if (words[j].equals(key + ",")) {
+                    if (words[j].equals("__" + key + "__" + ",")) {
                         words[j] = dataSet.get(key);
                     }
-                    if (words[j].equals(key + ".")) {
+                    if (words[j].equals("__" + key + "__" + ".")) {
                         words[j] = dataSet.get(key);
                     }
-                    if (words[j].equals(key)) {
+                    if (words[j].equals("$" + "__" + key + "__"  + "!")) {
+                        words[j] = dataSet.get(key);
+                        //System.out.println(words[j]);
+                    }
+                    if (words[j].equals("__" + key + "__")) {
                         words[j] = dataSet.get(key);
                         //System.out.println(words[j]);
                     }
