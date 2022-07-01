@@ -74,13 +74,13 @@ public class Mail {
             for (int j = 0; j < words.length; j++) {
                 for (String key: dataSet.keySet()) {
                     if (words[j].equals("__" + key + "__" + ",")) {
-                        words[j] = dataSet.get(key);
+                        words[j] = dataSet.get(key) + ",";
                     }
                     if (words[j].equals("__" + key + "__" + ".")) {
-                        words[j] = dataSet.get(key);
+                        words[j] = dataSet.get(key) + ".";
                     }
                     if (words[j].equals("$" + "__" + key + "__"  + "!")) {
-                        words[j] = dataSet.get(key);
+                        words[j] = "$" + dataSet.get(key) + "!";
                         //System.out.println(words[j]);
                     }
                     if (words[j].equals("__" + key + "__")) {
